@@ -1,8 +1,16 @@
 const filters = [
   { name: "All", value: "all" },
-  { name: "Clothing", value: "clothing" },
-  { name: "Shoes", value: "shoes" },
-  { name: "Accessories", value: "accessories" },
+  { name: "Smartphones", value: "smartphones" },
+  { name: "Laptops", value: "laptops" },
+  { name: "Fragrances", value: "fragrances" },
+  { name: "Skincare", value: "skincare" },
+  { name: "Groceries", value: "groceries" },
+  { name: "Home Decoration", value: "home-decoration" },
+  { name: "Furniture", value: "furniture" },
+  { name: "Sunglasses", value: "sunglasses" },
+  { name: "Automotive", value: "automotive" },
+  { name: "Motorcycle", value: "motorcycle" },
+  { name: "Lighting", value: "lighting" },
 ] as const;
 
 export function Sidebar() {

@@ -36,30 +36,21 @@ export async function getAllProducts() {
 export async function Page() {
   const data = await getAllProducts();
 
-  // {
-  //   id: 28,
-  //   title: '3D Embellishment Art Lamp',
-  //   description: '3D led lamp sticker Wall sticker 3d wall art light on/off button  cell operated (included)',
-  //   price: 20,
-  //   discountPercentage: 16.49,
-  //   rating: 4.82,
-  //   stock: 54,
-  //   brand: 'LED Lights',
-  //   category: 'home-decoration',
-  //   thumbnail: 'https://i.dummyjson.com/data/products/28/thumbnail.jpg',
-  //   images: [Array]
-  // }
-
   return (
     <>
-      <div className="flex justify-between">
-        <div aria-hidden id="spacer" />
+      <div className="flex items-center justify-between">
+        <div className="ml-4 text-2xl">All Products</div>
         <SearchInput />
       </div>
-      <div className="my-2 border" />
-      <div className="flex flex-wrap justify-center max-w-full gap-6">
+
+      <div className="mt-2 mb-4 border" aria-hidden id="separator" />
+
+      <div className="mb-2 flex max-h-full max-w-full flex-wrap justify-center gap-6 overflow-y-auto h-0 flex-auto">
         {data.products.map((product) => (
-          <div key={product.id} className="flex flex-col border w-56">
+          <div
+            key={product.id}
+            className="flex w-56 flex-col items-center gap-y-2 border p-2"
+          >
             <Image
               src={product.thumbnail}
               alt={product.title}
@@ -67,17 +58,16 @@ export async function Page() {
               width={80}
               height={80}
             />
+
             <div className="ml-2 flex flex-col">
               <div className="text-sm font-medium text-gray-900">
                 {product.title}
               </div>
-              <div className="text-sm text-gray-500">{product.brand}</div>
-              <div className="text-sm text-gray-500">{product.category}</div>
               <div className="text-sm text-gray-500">
-                {product.rating} ({product.stock})
+                Price: ${product.price}.00
               </div>
               <div className="text-sm text-gray-500">
-                {product.price} ({product.discountPercentage}%)
+                Rating: {product.rating}
               </div>
             </div>
           </div>
