@@ -12,6 +12,9 @@ const config = {
   experimental: {
     appDir: true,
   },
+  images: {
+    domains: ["i.dummyjson.com"],
+  },
 
   /**
    * If you have the "experimental: { appDir: true }" setting enabled, then you
