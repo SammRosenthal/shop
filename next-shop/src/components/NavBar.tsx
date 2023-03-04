@@ -5,7 +5,7 @@ export function NavBar() {
   const { data: sessionData } = useSession();
 
   return (
-    <nav className="w-full self-start md:h-16 h-14 border-black border">
+    <nav className="w-full self-start md:h-16 h-14 border-[0] border-b border-solid border-black">
       <div className="container flex justify-between h-full mx-auto">
         <Image src="/logo.svg" alt="logo" width={80} height={80} />
         <div className="text-black flex justify-center items-center gap-10">
