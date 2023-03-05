@@ -35,7 +35,7 @@ export async function getAllProducts() {
 export async function Page() {
   const data = await getAllProducts();
 
-  return <ProductView data={data} />;
+  return <ProductView data={data} name={"All Products"} />;
 }
 
 export default Page;

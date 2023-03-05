@@ -6,7 +6,7 @@ import Image from "next/image";
 import type { Product, ProductsResponse } from "./page";
 import MagnifyingGlassIcon from "@heroicons/react/24/outline/MagnifyingGlassIcon";
 
-export function ProductView({ data }: { data: ProductsResponse }) {
+export function ProductView({ data, name }: { data: ProductsResponse, name: string }) {
   const [search, setSearch] = useState("");
 
   const filteredData = data.products.filter((product) =>
@@ -16,7 +16,7 @@ export function ProductView({ data }: { data: ProductsResponse }) {
   return (
     <>
       <div className="flex min-w-full items-center justify-between">
-        <div className="ml-4 text-2xl">All Products</div>
+        <div className="ml-4 text-2xl">{name}</div>
         <SearchInput search={search} setSearch={setSearch} />
       </div>
       <div className="mt-2 mb-4 border" aria-hidden id="separator" />
