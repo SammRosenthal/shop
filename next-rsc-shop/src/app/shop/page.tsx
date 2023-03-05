@@ -1,6 +1,5 @@
-import Image from "next/image";
+import { ProductView } from "./ProductView";
 
-import SearchInput from "./SearchInput";
 
 export interface Product {
   id: string;
@@ -36,45 +35,7 @@ export async function getAllProducts() {
 export async function Page() {
   const data = await getAllProducts();
 
-  return (
-    <>
-      <div className="flex items-center justify-between">
-        <div className="ml-4 text-2xl">All Products</div>
-        <SearchInput />
-      </div>
-
-      <div className="mt-2 mb-4 border" aria-hidden id="separator" />
-
-      <div className="mb-2 flex max-h-full max-w-full flex-wrap justify-center gap-6 overflow-y-auto h-0 flex-auto">
-        {data.products.map((product) => (
-          <div
-            key={product.id}
-            className="flex w-56 flex-col items-center gap-y-2 border p-2"
-          >
-            <Image
-              src={product.thumbnail}
-              alt={product.title}
-              className="h-20 w-20"
-              width={80}
-              height={80}
-            />
-
-            <div className="ml-2 flex flex-col">
-              <div className="text-sm font-medium text-gray-900">
-                {product.title}
-              </div>
-              <div className="text-sm text-gray-500">
-                Price: ${product.price}.00
-              </div>
-              <div className="text-sm text-gray-500">
-                Rating: {product.rating}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </>
-  );
+  return <ProductView data={data} />;
 }
 
 export default Page;
