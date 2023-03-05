@@ -23,6 +23,8 @@ export function ProductView({
     product.title.toLowerCase().includes(search.toLowerCase())
   );
 
+  console.log({ user });
+
   return (
     <>
       <div className="flex h-[3.4rem] min-w-full items-center justify-between">
@@ -72,7 +74,7 @@ function ItemView({ items, user }: { items: Product[]; user: User }) {
   const { id } = user;
 
   return (
-    <div className="mb-2 flex h-0 max-h-full flex-auto flex-wrap gap-6 overflow-y-auto justify-center">
+    <div className="mb-2 flex h-0 max-h-full flex-auto flex-wrap justify-center gap-6 overflow-y-auto">
       {items.map((product) => (
         <div
           key={product.id}
