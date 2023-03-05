@@ -15,11 +15,11 @@ export function ProductView({ data, name }: { data: ProductsResponse, name: stri
 
   return (
     <>
-      <div className="flex min-w-full items-center justify-between">
+      <div className="flex min-w-full items-center justify-between h-[3.4rem]">
         <div className="ml-4 text-2xl">{name}</div>
         <SearchInput search={search} setSearch={setSearch} />
       </div>
-      <div className="mt-2 mb-4 border" aria-hidden id="separator" />
+      <div className="mb-4 border" aria-hidden id="separator" />
       {Boolean(filteredData.length) ? (
         <ItemView items={filteredData} />
       ) : (
@@ -37,7 +37,7 @@ function SearchInput({
   setSearch: Dispatch<SetStateAction<string>>;
 }) {
   return (
-    <div className="relative mt-2 rounded-md shadow-sm">
+    <div className="relative rounded-md shadow-sm">
       <input
         type="text"
         name="account-number"

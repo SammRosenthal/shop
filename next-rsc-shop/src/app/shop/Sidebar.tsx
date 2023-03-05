@@ -41,7 +41,7 @@ export async function Sidebar() {
           <Link href={`/shop/${filter.value}`} key={filter.value}>
             <li
               className={
-                "flex h-14 items-center justify-center border-[0] border-b border-solid border-black"
+                "flex h-16 items-center justify-center border-[0] border-b border-solid border-black"
               }
             >
               {filter.name}
