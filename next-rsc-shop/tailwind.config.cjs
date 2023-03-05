@@ -10,4 +10,9 @@ module.exports = {
     extend: {},
   },
   plugins: [require("@tailwindcss/forms")],
+  variants: {
+    extend: {
+      padding: ["last"],
+    },
+  },
 };

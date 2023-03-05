@@ -33,7 +33,6 @@ export async function Sidebar() {
     [{ name: "All", value: "" }]
   );
 
-  // <div className="mb-2 flex h-0 max-h-full max-w-full flex-auto flex-wrap gap-6 overflow-y-auto">
   return (
     <>
       <ul className="fixed flex max-h-full min-w-[12rem] flex-col overflow-y-auto border-[0] border-r border-solid border-black">

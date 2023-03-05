@@ -2,11 +2,21 @@
 
 import { type Dispatch, type SetStateAction, useState } from "react";
 import Image from "next/image";
-
-import type { Product, ProductsResponse } from "./page";
 import MagnifyingGlassIcon from "@heroicons/react/24/outline/MagnifyingGlassIcon";
+import { PlusIcon } from "@heroicons/react/20/solid";
 
-export function ProductView({ data, name }: { data: ProductsResponse, name: string }) {
+import type { User } from "../Navbar";
+import type { Product, ProductsResponse } from "./page";
+
+export function ProductView({
+  data,
+  name,
+  user,
+}: {
+  data: ProductsResponse;
+  name: string;
+  user: User;
+}) {
   const [search, setSearch] = useState("");
 
   const filteredData = data.products.filter((product) =>
@@ -15,13 +25,13 @@ export function ProductView({ data, name }: { data: ProductsResponse, name: stri
 
   return (
     <>
-      <div className="flex min-w-full items-center justify-between h-[3.4rem]">
+      <div className="flex h-[3.4rem] min-w-full items-center justify-between">
         <div className="ml-4 text-2xl">{name}</div>
         <SearchInput search={search} setSearch={setSearch} />
       </div>
       <div className="mb-4 border" aria-hidden id="separator" />
       {Boolean(filteredData.length) ? (
-        <ItemView items={filteredData} />
+        <ItemView items={filteredData} user={user} />
       ) : (
         <div className="text-center text-gray-500">No products found</div>
       )}
@@ -58,13 +68,15 @@ function SearchInput({
   );
 }
 
-function ItemView({ items }: { items: Product[] }) {
+function ItemView({ items, user }: { items: Product[]; user: User }) {
+  const { id } = user;
+
   return (
-    <div className="mb-2 flex h-0 max-h-full max-w-full flex-auto flex-wrap gap-6 overflow-y-auto">
+    <div className="mb-2 flex h-0 max-h-full flex-auto flex-wrap gap-6 overflow-y-auto justify-center">
       {items.map((product) => (
         <div
           key={product.id}
-          className="flex h-fit min-h-[12rem] w-56 flex-col items-center gap-y-2 border p-2"
+          className="relative flex h-fit min-h-[12rem] w-56 flex-col items-center gap-y-2 border p-2"
         >
           <Image
             src={product.thumbnail}
@@ -85,6 +97,15 @@ function ItemView({ items }: { items: Product[] }) {
               Rating: {product.rating}
             </div>
           </div>
+          {user && (
+            <button
+              type="button"
+              className="absolute bottom-2 right-2 rounded-full bg-slate-600 p-1 text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+              onClick={() => alert(id)}
+            >
+              <PlusIcon className="h-5 w-5" aria-hidden="true" />
+            </button>
+          )}
         </div>
       ))}
     </div>

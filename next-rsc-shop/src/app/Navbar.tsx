@@ -20,6 +20,7 @@ export interface User {
   lastName: string;
 }
 
+// maybe something nice than throwing errors here so the navbar could still render?
 export async function getMySession() {
   const userRes = await fetch('https://dummyjson.com/users/1');
 
@@ -29,7 +30,7 @@ export async function getMySession() {
 
   const user = await userRes.json() as User;
 
-  const cartRes = await fetch('https://dummyjson.com/carts/1');
+  const cartRes = await fetch(`https://dummyjson.com/carts/${user.id}`);
 
   if (!cartRes.ok) {
     throw new Error('Failed to fetch cart');

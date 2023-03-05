@@ -1,5 +1,5 @@
+import { getMySession } from "../Navbar";
 import { ProductView } from "./ProductView";
-
 
 export interface Product {
   id: string;
@@ -34,8 +34,9 @@ export async function getAllProducts() {
 
 export async function Page() {
   const data = await getAllProducts();
+  const { user } = await getMySession();
 
-  return <ProductView data={data} name={"All Products"} />;
+  return <ProductView data={data} name={"All Products"} user={user} />;
 }
 
 export default Page;
