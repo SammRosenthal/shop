@@ -23,17 +23,15 @@ export function ProductView({
     product.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  console.log({ user });
-
   return (
     <>
       <div className="flex h-[3.4rem] min-w-full items-center justify-between">
         <div className="ml-4 text-2xl">{name}</div>
-        <SearchInput search={search} setSearch={setSearch} />
+        <Searchbar search={search} setSearch={setSearch} />
       </div>
       <div className="mb-4 border" aria-hidden id="separator" />
-      {Boolean(filteredData.length) ? (
-        <ItemView items={filteredData} user={user} />
+      {Boolean(filteredData.length) && user ? (
+        <ItemCard items={filteredData} user={user} />
       ) : (
         <div className="text-center text-gray-500">No products found</div>
       )}
@@ -41,7 +39,7 @@ export function ProductView({
   );
 }
 
-function SearchInput({
+function Searchbar({
   search,
   setSearch,
 }: {
@@ -70,7 +68,7 @@ function SearchInput({
   );
 }
 
-function ItemView({ items, user }: { items: Product[]; user: User }) {
+function ItemCard({ items, user }: { items: Product[]; user: User }) {
   const { id } = user;
 
   return (
