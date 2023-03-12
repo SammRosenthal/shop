@@ -4,7 +4,8 @@ import { faker } from "@faker-js/faker";
 function generateUser() {
   return {
     id: faker.datatype.uuid(),
-    name: faker.name.firstName(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
     email: faker.internet.email(),
     avatar: faker.image.avatar(),
   };

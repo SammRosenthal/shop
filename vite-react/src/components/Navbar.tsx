@@ -22,12 +22,10 @@ export function Navbar() {
 function UserSection() {
   const { userQuery } = useUserApi();
 
+  // should try to make a nice skeleton for this
   if (!userQuery.isFetchedAfterMount) {
-    // should try to make a nice skeleton for this
     return <div className="flex items-center h-16">Loading...</div>;
   }
-
-  console.log('debug -> ', userQuery.data);
 
   return (
     <div className="flex gap-x-8 my-auto">
@@ -46,10 +44,17 @@ function LoggedIn({ user }: { user: User }) {
   return (
     <>
       <Avatar src={Logo} circle={false} />
+
       <Tooltip>
         <TooltipTrigger>
-          <Avatar src={user.avatar} fallback="SR" />
+          <Avatar
+            src={user.avatar}
+            fallback={
+              user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()
+            }
+          />
         </TooltipTrigger>
+
         <TooltipContent>
           <button
             className="rounded-md bg-white py-2.5 px-3.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-32"
@@ -65,6 +70,5 @@ function LoggedIn({ user }: { user: User }) {
 
 function LoggedOut() {
   const { loginMutation } = useUserApi();
-
   return <button onClick={() => loginMutation.mutate()}>Login</button>;
 }
