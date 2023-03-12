@@ -69,5 +69,13 @@ function LoggedIn({ user }: { user: User }) {
 
 function LoggedOut() {
   const { loginMutation } = useUserApi();
-  return <button onClick={() => loginMutation.mutate()}>Login</button>;
+
+  return (
+    <button
+      className="rounded-md bg-white py-2.5 px-3.5 w-24 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+      onClick={() => loginMutation.mutate()}
+    >
+      Login
+    </button>
+  );
 }
