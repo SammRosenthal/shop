@@ -1,7 +1,6 @@
 import { User, useUserApi } from "../hooks/api/use-user-api/useUserApi";
 import { Avatar } from "./common/Avatar";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./common/Tooltip";
-import Logo from "../../public/logo.svg";
 
 export function Navbar() {
   return (
@@ -43,7 +42,7 @@ function LoggedIn({ user }: { user: User }) {
 
   return (
     <>
-      <Avatar src={Logo} circle={false} />
+      <Avatar src={"/public/logo.svg"} circle={false} />
 
       <Tooltip>
         <TooltipTrigger>
