@@ -42,7 +42,7 @@ function LoggedIn({ user }: { user: User }) {
 
   return (
     <>
-      <Avatar src={"/public/logo.svg"} circle={false} />
+      <Avatar src={"/logo.svg"} circle={false} />
 
       <Tooltip>
         <TooltipTrigger>
