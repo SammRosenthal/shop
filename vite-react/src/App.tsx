@@ -1,11 +1,7 @@
-import { useUserApi } from "./hooks/api/userUserApi";
+import { BaseLayout } from "./components/layouts/BaseLayout";
 
 function App() {
-  const { userQuery } = useUserApi();
-
-  console.log(userQuery.data);
-
-  return <div className="text-3xl bg-red-500">hello</div>;
+  return <BaseLayout>hello</BaseLayout>;
 }
 
 export default App;

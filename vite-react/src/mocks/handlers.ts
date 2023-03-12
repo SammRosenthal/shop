@@ -1,9 +1,13 @@
-import { rest } from "msw";
+import {
+  mockLoginResponse,
+  mockLogOutResponse,
+  mockUserResponse,
+} from "../hooks/api/use-user-api/useUserApi.mock";
 
 const handlers = [
-  rest.get("/ping", (_req, res, ctx) =>
-    res(ctx.status(200), ctx.json({ message: "pong" }))
-  ),
+  mockUserResponse(),
+  mockLoginResponse(),
+  mockLogOutResponse(),
 ];
 
 export { handlers };

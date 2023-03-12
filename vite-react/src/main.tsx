@@ -12,7 +12,7 @@ function genericErrorHandler(error: unknown) {
   console.error(error);
 }
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       onError: genericErrorHandler,
