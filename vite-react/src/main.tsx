@@ -27,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    children: [{
+      path: "/shop",
+      element: <ProductList />,
+    }],
   },
 ]);
 
@@ -41,6 +45,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 /** START PART OF MSW API MOCKING */
 import { setupWorker } from 'msw'
 import { handlers } from './mocks/handlers'
+import { ProductList } from "./pages/ProductList";
 if (process.env.NODE_ENV === "development") {
   const worker = setupWorker(...handlers)
   worker.start();
